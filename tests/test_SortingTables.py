@@ -1,9 +1,4 @@
-"""
-Test to validate sorting behavior of a table column using Selenium and Pytest.
-"""
-from selenium.webdriver.common.by import By
-
-
+# @pytest.mark.regression
 def test_sort(browserInstance):
     driver = browserInstance
     browser_sorted_veggies = []

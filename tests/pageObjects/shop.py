@@ -1,4 +1,7 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
 from pageObjects.checkout_confirmation import CheckoutConfirmation
 from utils.browserutils import BrowserUtils
 
@@ -12,7 +15,12 @@ class ShopPage(BrowserUtils):
         self.product_cards = (By.XPATH, "//div[@class='card h-100']")
         self.checkout_button = (By.CSS_SELECTOR, "a[class*='btn-primary']")
 
+    def waitShopLink(self):
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(expected_conditions.presence_of_element_located(self.shop_link))
+
     def add_product_to_cart(self, product_name):
+        self.waitShopLink()
         self.driver.find_element(*self.shop_link).click()
         products = self.driver.find_elements(*self.product_cards)
         for product in products:

@@ -30,6 +30,12 @@ def browserInstance(request):
 
     if browser_name == "chrome":
         chrome_options = Options()
+        # 2. Add the headless argument
+        chrome_options.add_argument("--headless")
+
+        # Optional: Highly recommended for headless mode to avoid rendering issues
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--window-size=1920,1080")
 
         chrome_options.add_experimental_option(
             "prefs",
@@ -48,7 +54,8 @@ def browserInstance(request):
         driver = webdriver.Firefox()
 
     driver.implicitly_wait( 5 )
-    driver.get( "https://rahulshettyacademy.com/loginpagePractise/" )
+    # driver.get( "https://rahulshettyacademy.com/loginpagePractise/" )
+    # driver.get("https://practicetestautomation.com/practice-test-login/")
     yield driver  #Before test function execution
     driver.quit()  #post your test function execution
 

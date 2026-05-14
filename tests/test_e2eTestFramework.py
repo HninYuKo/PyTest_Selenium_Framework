@@ -9,13 +9,15 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from pageObjects.login import LoginPage
 
 
-test_data_path = '../data/test_e2eTestFramework.json'
+# test_data_path = '../data/test_e2eTestFramework.json'
+
+test_data_path = '/Users/mims/PycharmProjects/pythonTesting/data/test_e2eTestFramework04.json'
 with open(test_data_path) as f:
     test_data = json.load(f)
     test_list = test_data["data"]
 
 
-@pytest.mark.smoke
+# @pytest.mark.smoke
 @pytest.mark.parametrize("test_list_item", test_list)
 def test_e2e(browserInstance, test_list_item):
     driver = browserInstance
