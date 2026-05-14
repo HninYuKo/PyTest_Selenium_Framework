@@ -21,12 +21,12 @@ class LoginPage(BrowserUtils):
         wait = WebDriverWait(self.driver, 10)
         wait.until(expected_conditions.presence_of_element_located(self.successtext))
 
-    # def login(self, username, password):
-    #     self.driver.find_element(*self.username_input).send_keys(username)
-    #     self.driver.find_element(*self.password).send_keys(password)
-    #     self.driver.find_element(*self.sign_button).click()
-    #     shop_page = ShopPage(self.driver)
-    #     return shop_page
+    def loginShop(self, username, password):
+        self.driver.find_element(*self.username_input).send_keys(username)
+        self.driver.find_element(*self.password).send_keys(password)
+        self.driver.find_element(*self.sign_button).click()
+        shop_page = ShopPage(self.driver)
+        return shop_page
 
     def login(self, username, password):
         self.driver.find_element(*self.username_input).send_keys(username)
